@@ -41,11 +41,12 @@ class WeatherActivity : AppCompatActivity() {
             }
         })
 
-        setObservers()
         setSubscribers()
+
+        getData()
     }
 
-    private fun setObservers() {
+    private fun getData() {
         viewModel.getWeatherData()
     }
 
