@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.amar.weatherapp.model.WeatherInfo
 import com.amar.weatherapp.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class WeatherViewModel @Inject constructor(
     val weatherHashMap = _weatherHashMap.asStateFlow()
 
     fun getWeatherData() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _weatherList.value = weatherRepository.getWeatherData(_isLive.value).list;
 
             val mapOfList = _weatherList.value

@@ -15,7 +15,7 @@ class WeatherRepository @Inject constructor(
 
     suspend fun getWeatherData(isLive: Boolean) : ApiResponse {
         if (isLive) {
-            return apiService.getWeatherForCity("Belgrade")
+            return apiService.getWeatherForCity("Sarajevo")
         }
         else {
             return getLocalWeatherData()
